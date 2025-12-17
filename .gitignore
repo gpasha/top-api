@@ -3,6 +3,9 @@
 /node_modules
 /build
 
+# File uploads
+/uploads
+
 # Logs
 logs
 *.log
@@ -61,5 +64,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # TypeScript build info
 *.tsbuildinfo
 
-# Optional: если у вас есть папка clinic
+# Optional
 # /clinic
+

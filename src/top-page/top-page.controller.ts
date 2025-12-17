@@ -18,7 +18,6 @@ import { CreateTopPageDto } from './dto/create-top-page.dto';
 import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
 import { NOT_FOUND_PAGE_ERROR } from './top-page.constants';
 import { JWTGuard } from 'src/auth/guards/jwt.guard';
-// import { ConfigService } from '@nestjs/config';
 
 @Controller('top-page')
 export class TopPageController {
