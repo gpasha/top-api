@@ -57,12 +57,10 @@ describe('ReviewController (e2e)', () => {
   });
 
   it('/review/create (POST) - fail (not valid incoming data)', async () => {
-    const response = await request(app.getHttpServer())
+    await request(app.getHttpServer())
       .post('/review/create')
       .send({ ...testDto, rating: 0 })
       .expect(400);
-
-    console.log('response.body: ', response.body);
   });
 
   it('/review/byProduct/:productId (GET)', async () => {
