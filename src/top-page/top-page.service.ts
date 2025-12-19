@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { TopPageDocument } from './top-page.model';
 import { CreateTopPageDto } from './dto/create-top-page.dto';
 import { FindTopPageDto } from './dto/find-top-page.dto';
+import { subDays } from 'date-fns';
 
 @Injectable()
 export class TopPageService {
@@ -60,12 +61,32 @@ export class TopPageService {
       .exec();
   }
 
+  async findForHhUpdate(date: Date) {
+    return this.topPageModel
+      .find({
+        firstCategory: 0,
+        $or: [
+          {
+            'hh.updatedAt': {
+              $lt: subDays(date, 1),
+            },
+          },
+          {
+            'hh.updatedAt': {
+              $exists: false,
+            },
+          },
+        ],
+      })
+      .exec();
+  }
+
   async deleteById(id: string): Promise<TopPageDocument | null> {
     return this.topPageModel.findByIdAndDelete(id).exec();
   }
 
   async updateById(
-    id: string,
+    id: string | Types.ObjectId,
     dto: CreateTopPageDto,
   ): Promise<TopPageDocument | null> {
     return this.topPageModel.findByIdAndUpdate(id, dto, { new: true }).exec();

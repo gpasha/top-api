@@ -16,7 +16,7 @@ export class TopPageModel {
   category: string;
   hh?: {
     count: number;
-    juniourSalary: number;
+    juniorSalary: number;
     middleSalary: number;
     seniorSalary: number;
   };
@@ -36,7 +36,7 @@ class HhData {
   count: number;
 
   @Prop()
-  juniourSalary: number;
+  juniorSalary: number;
 
   @Prop()
   middleSalary: number;

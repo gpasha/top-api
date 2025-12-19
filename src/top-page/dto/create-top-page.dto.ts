@@ -14,7 +14,7 @@ class HhData {
   count: number;
 
   @IsNumber()
-  juniourSalary: number;
+  juniorSalary: number;
 
   @IsNumber()
   middleSalary: number;
